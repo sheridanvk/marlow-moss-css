@@ -1,0 +1,166 @@
+/* CSS files add styling rules to your content */
+
+.canvas {
+  
+  /* Centre the artwork */
+  margin: auto;
+  
+  box-shadow: 3px 3px 11px grey;
+}
+
+/* all fr values for the artwork is based on the pixel value /100 */
+/* pixel values for artwork estimated using the awesome Page Ruler Chrome extension */
+/* https://chrome.google.com/webstore/detail/page-ruler/emliamioobfffbgcfdchabfibonehkme?hl=en */
+
+#white-black-red {
+  display: grid;
+  grid-template-rows: 0.45fr 0.33fr 0.09fr 0.07fr 0.54fr 0.37fr 0.09fr 0.08fr 0.09fr 0.14fr 0.42fr 0.07fr 0.50fr 0.07fr 0.23fr 0.13fr 0.10fr;
+  grid-template-columns: 0.16fr 0.10fr 0.23fr 0.08fr 0.12fr 0.32fr 0.28fr 0.77fr 0.38fr 0.45fr 0.07fr;
+  background-color: #fff; 
+  
+  /*  Set the height relative to the viewport, and set the width with the required aspect ratio */
+  height: 70vh;
+  width: 55.0vh;
+  max-width: 90vw;
+}
+
+#white-black-red-grey {
+  display: grid;
+  grid-template-rows: 2.71fr 0.06fr 0.09fr 0.06fr 0.97fr 0.16fr 1.27fr 0.10fr 0.38fr;
+  grid-template-columns: 0.50fr 0.10fr 1.70fr 0.16fr 2.40fr;
+  background-color: #000; 
+  
+  /*  Set the height relative to the viewport, and set the width with the required aspect ratio */
+  height: 70vh;
+  width: 58.7vh;
+  max-width: 90vw;
+}
+
+#yellow-black-white {
+  display: grid;
+  grid-template-rows: 0.56fr 0.70fr 0.33fr 0.29fr 0.66fr 1.03fr 0.12fr 0.70fr 0.12fr 0.94fr 0.20fr 0.12fr 0.52fr;
+  grid-template-columns: 0.37fr 0.12fr 0.67fr 0.86fr 0.69fr 0.12fr 0.52fr 0.12fr 0.16fr 0.46fr 0.30fr;
+  background-color: #fff; 
+  
+  /*  Set the height relative to the viewport, and set the width with the required aspect ratio */
+  height: 70vh;
+  width: 48.9vh;
+  max-width: 90vw;
+}
+
+/* we have to use a wrapper around the polygon to apply a drop shadow to it, because otherwise the filter gets added 
+to the polygon div and then the clip-path removes it */
+.drop-shadow-wrapper {
+  filter: drop-shadow(3px 3px 4px grey);
+}
+
+/* Add drop shadows to lines when it's the yellow/black/white composition */
+#yellow-black-white .line {
+  filter: drop-shadow(3px 3px 4px grey);
+}
+
+#yellow-black-white .polygon {
+  /* polygon starts from the top-left point */
+  clip-path: polygon(
+    29% 0%, 34% 0%, 34% 58%, 87% 58%, 
+    87% 60%, 61% 60%, 61% 73.5%, 100% 73.5%,
+    100% 75.5%, 61% 75.5%, 61% 85%, 56% 85%,
+    56% 75.5%, 34% 75.5%, 
+    34% 73.5%, 56% 73.5%,56% 60%,34% 60%,
+    34% 100%, 29% 100%,
+    29% 60%, 0% 60%, 0% 58%, 29% 58%);
+  -webkit-clip-path: polygon(
+    29% 0%, 34% 0%, 34% 58%, 87% 58%, 
+    87% 60%, 61% 60%, 61% 73.5%, 100% 73.5%,
+    100% 75.5%, 61% 75.5%, 61% 85%, 56% 85%,
+    56% 75.5%, 34% 75.5%, 
+    34% 73.5%, 56% 73.5%,56% 60%,34% 60%,
+    34% 100%, 29% 100%,
+    29% 60%, 0% 60%, 0% 58%, 29% 58%);
+  border-radius: 1px;
+  width: 100%;
+  height: 100%;
+
+}
+
+#red-blue-yellow-white {
+  display: grid;
+  grid-template-rows: 0.14fr 0.38fr 0.20fr 0.34fr 0.13fr 0.24fr 1.44fr 0.28fr 0.51fr 0.31fr 0.18fr 0.25fr 0.22fr 0.33fr 0.22fr 0.18fr 0.25fr;
+  grid-template-columns: 0.28fr 0.34fr 0.09fr 0.13fr 0.82fr 0.21fr 0.68fr 0.43fr 0.24fr 0.68fr 0.24fr;
+  background-color: #fff; 
+  
+  /*  Set the height relative to the viewport, and set the width with the required aspect ratio */
+  height: 70vh;
+  width: 51.8vh;
+  max-width: 90vw;
+}
+
+.box,
+.line {
+  border-radius: 1px;
+}
+
+.black {
+  background-color: #000;
+}
+
+.red {
+  background-color: #CA4141;
+}
+
+.white {
+  background-color: #fff;
+}
+
+.grey {
+  background-color: #E1DFE2;
+}
+
+.yellow {
+  background-color: #F6D867;
+}
+
+.blue {
+  background-color: #08449C;
+}
+
+body {
+  max-height: 80vh;
+}
+
+header {
+  display: flex;
+}
+
+.attribution {
+  margin: 2vh
+}
+
+.text {
+  font-family: 'Helvetica', sans-serif;
+  padding: 1em;
+  text-align: center;
+}
+
+#title {
+  margin: auto;
+}
+
+h1 {
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+h2 {
+  font-size: 1.2em;
+  line-height: 1.2em;
+  margin-bottom: 0.25em;
+}
+
+h3 {
+  font-weight: lighter;
+}
+
+a {
+  text-decoration: none;
+}
