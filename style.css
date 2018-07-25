@@ -1,64 +1,79 @@
-/* CSS files add styling rules to your content */
-
-.canvas {
-  
+#artwork {
+  max-width: 400px;
   /* Centre the artwork */
   margin: auto;
-  
+  padding: 2em;
+}
+
+/* For each frame, we set it up so that the div has zero height, and padding that matches the aspect
+ratio of the painting (see rules below)
+More details on this method here: https://css-tricks.com/aspect-ratio-boxes/ */
+.frame {
+  height:0; 
+  position:relative; 
+  margin: auto;
   box-shadow: 3px 3px 11px grey;
 }
 
-/* all fr values for the artwork is based on the pixel value /100 */
+/* Then for the canvas, we position it absolutely in the parent element so the padding doesn't push it down */
+.canvas {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top:0;
+  left:0;
+}
+
+/* all fr values for the artwork's grids are based on the pixel value /100 */
 /* pixel values for artwork estimated using the awesome Page Ruler Chrome extension */
 /* https://chrome.google.com/webstore/detail/page-ruler/emliamioobfffbgcfdchabfibonehkme?hl=en */
 
-#white-black-red {
+#white-black-red.frame {
+  padding-top:calc((70/55)*100%); 
+}
+
+#white-black-red .canvas{
   display: grid;
   grid-template-rows: 0.45fr 0.33fr 0.09fr 0.07fr 0.54fr 0.37fr 0.09fr 0.08fr 0.09fr 0.14fr 0.42fr 0.07fr 0.50fr 0.07fr 0.23fr 0.13fr 0.10fr;
   grid-template-columns: 0.16fr 0.10fr 0.23fr 0.08fr 0.12fr 0.32fr 0.28fr 0.77fr 0.38fr 0.45fr 0.07fr;
   background-color: #fff; 
-  
-  /*  Set the height relative to the viewport, and set the width with the required aspect ratio */
-  height: 70vh;
-  width: 55.0vh;
-  max-width: 90vw;
 }
 
-#white-black-red-grey {
+#white-black-red-grey.frame {
+  padding-top:calc((70/58.7)*100%);
+  
+}
+
+#white-black-red-grey .canvas {
   display: grid;
   grid-template-rows: 2.71fr 0.06fr 0.09fr 0.06fr 0.97fr 0.16fr 1.27fr 0.10fr 0.38fr;
   grid-template-columns: 0.50fr 0.10fr 1.70fr 0.16fr 2.40fr;
   background-color: #000; 
-  
-  /*  Set the height relative to the viewport, and set the width with the required aspect ratio */
-  height: 70vh;
-  width: 58.7vh;
-  max-width: 90vw;
 }
 
-#yellow-black-white {
+#yellow-black-white.frame {
+  padding-top:calc((70/48.9)*100%);
+}
+
+#yellow-black-white .canvas {
   display: grid;
   grid-template-rows: 0.56fr 0.70fr 0.33fr 0.29fr 0.66fr 1.03fr 0.12fr 0.70fr 0.12fr 0.94fr 0.20fr 0.12fr 0.52fr;
   grid-template-columns: 0.37fr 0.12fr 0.67fr 0.86fr 0.69fr 0.12fr 0.52fr 0.12fr 0.16fr 0.46fr 0.30fr;
   background-color: #fff; 
-  
-  /*  Set the height relative to the viewport, and set the width with the required aspect ratio */
-  height: 70vh;
-  width: 48.9vh;
-  max-width: 90vw;
+}
+
+/* Add drop shadows to lines when it's the yellow/black/white composition - this painting is 3D */
+#yellow-black-white .line {
+  filter: drop-shadow(3px 3px 4px rgba(0,0,0,0.4));
 }
 
 /* we have to use a wrapper around the polygon to apply a drop shadow to it, because otherwise the filter gets added 
 to the polygon div and then the clip-path removes it */
 .drop-shadow-wrapper {
-  filter: drop-shadow(3px 3px 4px grey);
+  filter: drop-shadow(3px 3px 4px rgba(0,0,0,0.4));
 }
 
-/* Add drop shadows to lines when it's the yellow/black/white composition */
-#yellow-black-white .line {
-  filter: drop-shadow(3px 3px 4px grey);
-}
-
+/* this grid ended up being more complicated than it needed to be due to using the polygon instead of the grid lines for that piece. I've left them in for reference in any case. */
 #yellow-black-white .polygon {
   /* polygon starts from the top-left point */
   clip-path: polygon(
@@ -83,21 +98,15 @@ to the polygon div and then the clip-path removes it */
 
 }
 
-#red-blue-yellow-white {
+#red-blue-yellow-white.frame {
+  padding-top:calc((70/51.8)*100%);
+}
+
+#red-blue-yellow-white .canvas {
   display: grid;
   grid-template-rows: 0.14fr 0.38fr 0.20fr 0.34fr 0.13fr 0.24fr 1.44fr 0.28fr 0.51fr 0.31fr 0.18fr 0.25fr 0.22fr 0.33fr 0.22fr 0.18fr 0.25fr;
   grid-template-columns: 0.28fr 0.34fr 0.09fr 0.13fr 0.82fr 0.21fr 0.68fr 0.43fr 0.24fr 0.68fr 0.24fr;
   background-color: #fff; 
-  
-  /*  Set the height relative to the viewport, and set the width with the required aspect ratio */
-  height: 70vh;
-  width: 51.8vh;
-  max-width: 90vw;
-}
-
-.box,
-.line {
-  border-radius: 1px;
 }
 
 .black {
@@ -128,39 +137,8 @@ body {
   max-height: 80vh;
 }
 
-header {
-  display: flex;
+header,
+footer {
+  background-color: #E1DFE2;
 }
 
-.attribution {
-  margin: 2vh
-}
-
-.text {
-  font-family: 'Helvetica', sans-serif;
-  padding: 1em;
-  text-align: center;
-}
-
-#title {
-  margin: auto;
-}
-
-h1 {
-  font-size: 1.5em;
-  font-weight: bold;
-}
-
-h2 {
-  font-size: 1.2em;
-  line-height: 1.2em;
-  margin-bottom: 0.25em;
-}
-
-h3 {
-  font-weight: lighter;
-}
-
-a {
-  text-decoration: none;
-}
