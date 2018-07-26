@@ -133,12 +133,9 @@ to the polygon div and then the clip-path removes it */
   background-color: #08449C;
 }
 
-body {
-  max-height: 80vh;
-}
-
 header,
 footer {
   background-color: #E1DFE2;
+  padding: 1em;
 }
 
